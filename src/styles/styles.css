@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.home-page{
+    display: flex;
+}
+
+.side-menu{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pokemon-list{
+    padding: 25px 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.pokemon-types{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#contextmenu{
+    background-color: #CCC5B9;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    position: absolute;
+}
+
+#contextmenu * {
+    margin: 8px 16px;
+    padding: 8px 16px;
+}
+
+#contextmenu button{
+    background-color: #EB5E28;
+    color: #252422;
+    font-size: large;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+}
+
