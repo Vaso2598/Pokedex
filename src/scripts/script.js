@@ -1,7 +1,8 @@
 const pokemonList = document.getElementById("pokemon-list");
 const contextmenu = document.getElementById("contextmenu");
 const addButton = document.getElementById("add");
-const yourTeam = [];
+const yourTeam = document.getElementById("yourTeam");
+let yourTeamArray = [];
 
 let currentPokemonId = null;
 function fetchFirstGeneration() {
@@ -72,9 +73,11 @@ function hideContext() {
 
 // Add To Team
 addButton.addEventListener("click", () => {
-	if (yourTeam.length < 5) {
-		yourTeam.push(currentPokemonId);
-		console.log(yourTeam);
+	if (yourTeamArray.length < 5) {
+		yourTeamArray.push(currentPokemonId);
+		console.log(yourTeamArray);
+		// yourTeam.innerHTML = "";
+		// yourTeam.innerHTML = yourTeamArray.map((item) => `${item}<br>`).join("");
 	} else {
 		alert("only 5 Pokemon are allowed");
 	}

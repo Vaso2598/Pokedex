@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+header{
+    margin: 25px 100px;
+}
+
 .home-page{
     display: flex;
 }
@@ -15,17 +19,29 @@
 }
 
 .pokemon-list{
-    padding: 25px 50px;
+    padding: 25px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 25px;
 }
 
+.pokemonCard{
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    height: 230px;
+    border: 1px black solid;
+    border-radius: 10px;
+    padding: 10px;
+}
+
 .pokemon-types{
+    margin-top: 5px;
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 5px;
+    justify-content: space-evenly;
 }
 
 #contextmenu{
@@ -34,6 +50,7 @@
     flex-direction: column;
     border-radius: 4px;
     position: absolute;
+    display: none;
 }
 
 #contextmenu * {
