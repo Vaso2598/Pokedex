@@ -3,8 +3,8 @@ const contextmenu = document.getElementById("contextmenu");
 const addButton = document.getElementById("add");
 const yourTeam = document.getElementById("yourTeam");
 let yourTeamArray = [];
-
 let currentPokemonId = null;
+
 function fetchFirstGeneration() {
 	fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 		.then((response) => response.json())
@@ -41,6 +41,47 @@ function fetchPokemonData(pokemon) {
 		});
 }
 
+// Display your Team
+
+function updateTeamDisplay() {
+	yourTeam.innerHTML = "";
+	yourTeamArray.forEach((pokemonId) => {
+		fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
+			.then((response) => response.json())
+			.then((pokeData) => {
+				const teamPokemonElement = document.createElement("div");
+				teamPokemonElement.classList.add("pokemonCard");
+				teamPokemonElement.innerHTML = `
+                    <h3>#${pokeData.id.toString().padStart(3, "0")}</h3>
+                    <img src="${pokeData.sprites.front_default}">
+                    <h3>${pokeData.name}</h3>
+                    <div class="pokemon-types">
+                        ${pokeData.types
+													.map((type) => {
+														return `<span class="pokemon-type-${type.type.name}">${type.type.name}</span>`;
+													})
+													.join("")}
+                    </div>
+                `;
+				yourTeam.appendChild(teamPokemonElement);
+			});
+	});
+}
+
+// Adding items to team with Addbutton
+
+addButton.addEventListener("click", () => {
+	const selectedPokemonId = currentPokemonId;
+	if (selectedPokemonId && yourTeamArray.length < 5 && !yourTeamArray.includes(selectedPokemonId)) {
+		yourTeamArray.push(selectedPokemonId);
+		updateTeamDisplay();
+	} else if (yourTeamArray.includes(selectedPokemonId)) {
+		alert("This Pokemon is already in your team!");
+	} else {
+		alert("You can only have up to 5 unique Pokémon in your team!");
+	}
+});
+
 fetchFirstGeneration();
 
 // Contextmenu
@@ -70,15 +111,3 @@ function hideContext() {
 	contextmenu.style.display = "none";
 	currentPokemonId = null;
 }
-
-// Add To Team
-addButton.addEventListener("click", () => {
-	if (yourTeamArray.length < 5) {
-		yourTeamArray.push(currentPokemonId);
-		console.log(yourTeamArray);
-		// yourTeam.innerHTML = "";
-		// yourTeam.innerHTML = yourTeamArray.map((item) => `${item}<br>`).join("");
-	} else {
-		alert("only 5 Pokemon are allowed");
-	}
-});
