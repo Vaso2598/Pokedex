@@ -3,9 +3,36 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title>Battle</title>
+		<link rel="stylesheet" href="./src/styles/colors.css" />
+		<link rel="stylesheet" href="./src/styles/styles.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=VT323&display=swap"
+			rel="stylesheet" />
 	</head>
 	<body>
-		<h1>Battle</h1>
+		<header>
+			<h1>
+				<a href="./index.html">Pokémon list</a>
+			</h1>
+			<h1>Battle</h1>
+		</header>
+		<main>
+			<div class="team">
+				<h2>Your Team</h2>
+				<div id="yourTeamBattle" class="pokemon-list"></div>
+			</div>
+			<div class="team">
+				<h2>Enemy Team</h2>
+				<div id="enemyTeam" class="pokemon-list"></div>
+			</div>
+			<div>
+				<img class="background" src="./src/images/wp10311683-pokemon-landscape-wallpapers.jpg" />
+			</div>
+			<audio id="audio" autoplay loop src="./src/sounds/Battle.mp3"></audio>
+		</main>
+		<script src="./src/scripts/battle.js"></script>
 	</body>
 </html>

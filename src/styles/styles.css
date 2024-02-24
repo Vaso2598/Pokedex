@@ -2,20 +2,66 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Pixelify Sans;
+}
+
+a{
+    text-decoration: none;
+    color: #292929;
 }
 
 header{
-    margin: 25px 100px;
+    padding: 30px 30px;
+    background-color: #e65a41;
+    color: #292929;
+    display: flex;
+    justify-content: space-around;
+}
+
+.background{
+    position: fixed;
+    top: -40%;
+    left: 0;
+    z-index: -1;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0.5;
 }
 
 .home-page{
     display: flex;
-}
+    flex-direction: column-reverse;
+}   
 
-.side-menu{
-    width: 200px;
+/* your Team */
+#team_menu{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    display: none; 
+}
+
+#team_menu h2{
+    margin-top: 15px;
+    color: #292929;
+}
+
+#yourTeam{
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+#battleButton{
+    background-color: #fff6a4;
+    color: #252422;
+    font-size: large;
+    font-weight: bold;
+    border: 1px #41414a solid;
+    border-radius: 4px;
+    padding: 8px 16px;
 }
 
 .pokemon-list{
@@ -34,6 +80,9 @@ header{
     border: 1px black solid;
     border-radius: 10px;
     padding: 10px;
+    background-color: #73738338;
+    align-items: center;
+    justify-content: center;
 }
 
 .pokemon-types{
@@ -44,6 +93,7 @@ header{
     justify-content: space-evenly;
 }
 
+/* contextmenu */
 #contextmenu{
     background-color: #CCC5B9;
     display: flex;
@@ -67,3 +117,11 @@ header{
     border-radius: 4px;
 }
 
+/* Battle Page */
+
+.team{
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

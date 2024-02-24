@@ -2,6 +2,7 @@ const pokemonList = document.getElementById("pokemon-list");
 const contextmenu = document.getElementById("contextmenu");
 const addButton = document.getElementById("add");
 const yourTeam = document.getElementById("yourTeam");
+const battleButton = document.getElementById("battleButton");
 let yourTeamArray = [];
 let currentPokemonId = null;
 
@@ -18,10 +19,11 @@ function fetchFirstGeneration() {
 
 function fetchPokemonData(pokemon) {
 	const url = pokemon.url;
+	// console.log(url);
 	fetch(url)
 		.then((response) => response.json())
 		.then(function (pokeData) {
-			// console.log(pokeData);
+			console.log(pokeData);
 			const pokemonElement = document.createElement("div");
 			pokemonElement.classList.add("pokemonCard");
 			pokemonElement.dataset.id = pokeData.id;
@@ -66,6 +68,18 @@ function updateTeamDisplay() {
 				yourTeam.appendChild(teamPokemonElement);
 			});
 	});
+
+	if (yourTeamArray.length > 0) {
+		team_menu.style.display = "flex";
+	} else {
+		team_menu.style.display = "none";
+	}
+
+	if (yourTeamArray.length === 5) {
+		battleButton.style.display = "block";
+	} else {
+		battleButton.style.display = "none";
+	}
 }
 
 // Adding items to team with Addbutton
@@ -80,6 +94,14 @@ addButton.addEventListener("click", () => {
 	} else {
 		alert("You can only have up to 5 unique Pokémon in your team!");
 	}
+});
+
+battleButton.addEventListener("click", () => {
+	// const params = new URLSearchParams();
+	// yourTeamArray.forEach((id) => params.append("pokemon", id));
+	// window.location.href = `battle.html?pokemon=${yourTeamArray.join(",")}`;
+	window.location.href = `battle.html?pokemon=${yourTeamArray}`;
+	// console.log(window.location.href);
 });
 
 fetchFirstGeneration();
